@@ -34,6 +34,6 @@ public class Televisions {
     }
 
     public void WaitUntilVisibility(By element){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(element)));
     }
 }
