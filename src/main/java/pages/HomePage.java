@@ -29,7 +29,6 @@ public class HomePage {
         driver.findElement(Tv_Appliances).click();
     }
 
-
     public Televisions SelectTelevisions() {
         WaitUntilVisibility(Television);
         driver.findElement(Television).click();

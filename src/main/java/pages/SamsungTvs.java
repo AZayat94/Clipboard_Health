@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SamsungTvs {
@@ -31,30 +32,26 @@ public class SamsungTvs {
     public void selectFromDropDown(String option) {
         findDropDownElement().selectByVisibleText(option);
     }
-    public void SortHighToLow() throws InterruptedException {
+    public void SortHighToLow() {
         WaitUntilPageLoads();
         selectFromDropDown("Price: High to Low");
         }
 
-
-
-
-    public void GetAllAvailableTvs(){
+    public SecondHighestPricedTv GetAllAvailableTvs(){
         List<WebElement> AvailableTvs = driver.findElements(All_Available_Tvs);
-        AvailableTvs.get(2).click();
+        AvailableTvs.get(1).click();
+        Switch_Tabs();
+        return new SecondHighestPricedTv(driver);
     }
 
-    public void WaitUntilVisibility(By element){
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(element)));
-    }
-
-    public void WaitUntilClickability(By element){
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-    }
     public void WaitUntilPageLoads(){
         wait.until(driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
     }
-
-
+    public void Switch_Tabs(){
+        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(0));
+        driver.close();
+        driver.switchTo().window(tabs2.get(1));
+    }
 
 }
