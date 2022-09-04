@@ -1,5 +1,5 @@
 Clipboard_Health Selenium Project
-This is a sample project written in the page object model framework.
+This is a sample project written on the page object model framework.
 
 TestNG is used as a test framework. Dependency Java Maven
 
